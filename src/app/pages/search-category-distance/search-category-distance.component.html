@@ -1,0 +1,39 @@
+<div class="well">
+  <div class="row">
+      <div class="col-xs-12">
+          <form id="search-category-distance" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+              <div class="row">
+                  <div class="col-xs-4 form-group">
+                      <label for="categoryId">Category</label>
+                      <select [ngModel]="categoryId" name="categoryId" class="form-control" id="categoryId" required>
+                          <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                      </select>
+                  </div>
+
+                  <div class="col-xs-4 form-group">
+                      <label for="distance">Distance (meters)</label>
+                      <input
+                              type="number"
+                              id="distance"
+                              required
+                              class="form-control"
+                              [ngModel]="distance"
+                              onKeyPress="if(this.value.length > 6) return false;"
+                              max="100000"
+                              name="distance">
+                  </div>
+                  <div class="col-xs-4 form-group" style="margin-top: 25px">
+                    <button class="btn btn-success" type="submit" [disabled]="!f.valid">Search venues nearby</button>
+                    <div *ngIf="isSearching">
+                      <span>searching ...</span>
+                    </div>
+                    <div *ngIf="receivedResult">
+                      <span>done!</span>
+                    </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+<app-map></app-map>

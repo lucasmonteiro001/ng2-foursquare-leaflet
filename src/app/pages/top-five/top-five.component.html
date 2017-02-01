@@ -1,0 +1,21 @@
+<div class="well">
+  <div class="row">
+      <div class="col-xs-12">
+          <form id="shopping-list-add" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+              <div class="row">
+                  <div class="col-xs-12 text-center">
+                      <button class="btn btn-info" type="submit">Click here to see the trending places (top 5) in your area</button>
+                    <div *ngIf="isSearching">
+                      <span>searching ...</span>
+                    </div>
+                    <div *ngIf="receivedResult">
+                      <span>done!</span>
+                    </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+<app-map></app-map>
+
